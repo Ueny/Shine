@@ -1,0 +1,534 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('images/universe.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Microsoft YaHei', sans-serif;
+    color: #fff;
+}
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: stars 8s linear infinite;
+}
+
+.universe {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1000px;
+    cursor: move;
+    overflow: hidden;
+}
+
+.title {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.title h1 {
+    font-size: 3vw;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
+    animation: glow 1.5s infinite alternate;
+}
+
+.title p {
+    font-size: 2vw;
+    margin: 1rem 0;
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
+    animation: glow 1.5s infinite alternate;
+}
+
+.planets {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+}
+
+.planet {
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 15vw;
+    height: 15vw;
+    left: 50%;
+    top: 50%;
+    margin-left: -7.5vw;
+    margin-top: -7.5vw;
+    cursor: pointer;
+}
+
+.planet-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.planet-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    animation: glow 1.5s infinite alternate;
+}
+
+.planet-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.planet-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.planet-face.front {
+    transform: rotateY(0deg);
+}
+
+.planet-face.back {
+    transform: rotateY(180deg);
+}
+
+.planet-face.left {
+    transform: rotateY(-90deg);
+}
+
+.planet-face.right {
+    transform: rotateY(90deg);
+}
+
+.planet-face.top {
+    transform: rotateX(90deg);
+}
+
+.planet-face.bottom {
+    transform: rotateX(-90deg);
+}
+
+.planet-name {
+    font-size: 3.0rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
+    animation: glow 1.5s infinite alternate;
+}
+
+.planet:hover .planet-body {
+    transform: scale(1.2);
+    box-shadow: 0 0 40px rgba(255,107,156,0.6);
+    z-index: 10;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 100;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 107, 156, 0.3);
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.modal-description {
+    text-align: center;
+    margin-top: 1rem;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+@keyframes stars {
+    from { background-position: 0 0; }
+    to { background-position: 200px 200px; }
+}
+
+@keyframes orbit {
+    from { transform: rotateZ(0deg); }
+    to { transform: rotateZ(360deg); }
+}
+
+/* 樱花飘落效果 */
+.petals {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.petal {
+    position: absolute;
+    background: #ffd7e9;
+    border-radius: 150% 0 150% 0;
+    animation: falling linear infinite;
+}
+
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    color: #ff86b6;
+    animation: floating linear infinite;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.album-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-decoration {
+    font-size: 2rem;
+    color: #ff86b6;
+    margin: 1rem 0;
+}
+
+.album-header h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    background: linear-gradient(45deg, #ff6b9c, #ff86b6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ff86b6;
+    letter-spacing: 2px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.frame-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin: 10px;
+    pointer-events: none;
+}
+
+.photo-info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.photo-info h3 {
+    color: #ff6b9c;
+    margin-bottom: 10px;
+}
+
+.photo-info p {
+    color: #666;
+}
+
+/* 动画关键帧 */
+@keyframes falling {
+    0% {
+        transform: translate(0, -10%) rotate(0deg);
+    }
+    100% {
+        transform: translate(100px, 100vh) rotate(360deg);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(50px, -100vh) rotate(360deg);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .title h1 {
+        font-size: 4vw;
+    }
+
+    .title p {
+        font-size: 2.5vw;
+    }
+
+    .planet {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+.book {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;
+    margin: 50px auto;
+    perspective: 2000px;
+}
+
+.pages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    backface-visibility: hidden;
+    background: #fff;
+    overflow: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+/* 书脊阴影 */
+.page::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to right, 
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.05) 15%,
+        transparent 100%);
+    z-index: 1;
+}
+
+/* 翻页时的阴影效果 */
+.page[style*="rotateY(-180deg)"]::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to left, 
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.05) 15%,
+        transparent 100%);
+    z-index: 1;
+}
+
+/* 封面样式 */
+.cover {
+    background: linear-gradient(45deg, #ff6b9c, #ff86b6);
+    color: #fff;
+}
+
+.cover .front {
+    background: linear-gradient(45deg, #ff6b9c, #ff86b6);
+}
+
+.cover .back {
+    background: #fff;
+}
+
+.cover h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.cover-subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.end-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #ff6b9c;
+    text-align: center;
+}
+
+.book-nav {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.book-nav button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ff6b9c;
+    transition: all 0.3s ease;
+}
+
+.book-nav button:hover {
+    background: #ff6b9c;
+    color: #fff;
+}
+
+.star-message {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        filter: brightness(1);
+    }
+    100% {
+        filter: brightness(4);
+    }
+} 
