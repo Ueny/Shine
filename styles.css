@@ -47,29 +47,28 @@ body {
 }
 
 .title h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    color: #FFD700;
+    background: linear-gradient(45deg, #FFD700, #FFCC00);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 0.75s infinite alternate;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .title p {
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin: 1rem 0;
-    padding: 0 10px;
-    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    color: #FFD700;
+    background: linear-gradient(45deg, #FFD700, #FFCC00);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 0.75s infinite alternate;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -110,7 +109,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    animation: glow 0.75s infinite alternate;
+    animation: glow 1s infinite alternate;
 }
 
 .planet-face {
@@ -159,7 +158,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 0.75s infinite alternate;
+    animation: glow 1s infinite alternate;
 }
 
 .planet:hover .planet-body {
@@ -541,14 +540,14 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 0.75s infinite alternate;
+    animation: glow 1s infinite alternate;
 }
 
 @keyframes glow {
     0% {
-        filter: brightness(0.5);
+        filter: brightness(1.125);
     }
     100% {
-        filter: brightness(1);
+        filter: brightness(4.5);
     }
 } 
