@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaY = e.pageY - startY;
         rotationY += deltaX * 0.2; // 更新 Y 轴旋转
         rotationX -= deltaY * 0.2; // 更新 X 轴旋转
-        rotationZ = (rotationX + rotationY) / 2; // Z 轴旋转与 X 和 Y 轴保持相同比例
         startX = e.pageX;
         startY = e.pageY;
 
@@ -89,6 +88,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     universe.addEventListener('mouseup', () => isDragging = false);
     universe.addEventListener('mouseleave', () => isDragging = false);
+
+    universe.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
+    });
+
+    universe.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.touches[0].pageX - startX;
+        const deltaY = e.touches[0].pageY - startY;
+        rotationY += deltaX * 0.2;
+        rotationX -= deltaY * 0.2;
+        startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
+
+        updateRotation(rotationX, rotationY, rotationZ);
+    });
+
+    universe.addEventListener('touchend', () => isDragging = false);
     modal.addEventListener('click', () => modal.style.display = 'none');
 
     loadImages();
