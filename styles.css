@@ -42,6 +42,8 @@ body {
     transform: translateX(-50%);
     text-align: center;
     z-index: 10;
+    width: 100%;
+    padding: 0 10px;
 }
 
 .title h1 {
@@ -52,7 +54,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 1.5s infinite alternate;
+    animation: glow 0.75s infinite alternate;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -61,14 +63,15 @@ body {
 .title p {
     font-size: 1.5rem;
     margin: 1rem 0;
+    padding: 0 10px;
     background: linear-gradient(45deg, #ffcc00, #ff6600);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 1.5s infinite alternate;
+    animation: glow 0.75s infinite alternate;
     max-width: 100%;
-    width: 100%;
+    width: auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -111,7 +114,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    animation: glow 1.5s infinite alternate;
+    animation: glow 0.75s infinite alternate;
 }
 
 .planet-face {
@@ -160,7 +163,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 1.5s infinite alternate;
+    animation: glow 0.75s infinite alternate;
 }
 
 .planet:hover .planet-body {
@@ -389,6 +392,13 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .title p {
+        font-size: 1.2rem;
+        padding: 0 5px;
+    }
+}
+
 .book {
     position: relative;
     width: 90%;
@@ -531,7 +541,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
-    animation: glow 1.5s infinite alternate;
+    animation: glow 0.75s infinite alternate;
 }
 
 @keyframes glow {
@@ -539,6 +549,6 @@ body {
         filter: brightness(0.5);
     }
     100% {
-        filter: brightness(2);
+        filter: brightness(1);
     }
 } 
