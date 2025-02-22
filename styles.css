@@ -174,8 +174,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.9);
-    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
 }
 
 .modal-content {
@@ -185,11 +185,9 @@ body {
     transform: translate(-50%, -50%);
     width: 80%;
     max-width: 400px;
-    max-height: 80vh;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.9);
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 0 50px rgba(255, 107, 156, 0.3);
+    padding: 20px;
 }
 
 .modal-content img {
