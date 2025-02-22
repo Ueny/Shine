@@ -17,13 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createPlanetHTML(imagePath) {
-        const planetName = getRandomName();
+        const planetName = getRandomName(); // 获取随机星球名字
         return `
             <div class="planet">
                 <div class="planet-body">
-                    <img src="${imagePath}" alt="${planetName}">
+                    <img src="${imagePath}" alt="${planetName}"> <!-- 使用星球名字作为 alt 属性 -->
                 </div>
-                <div class="planet-name">${planetName}</div>
+                <!-- 删除星球名字的 div -->
+                <!-- <div class="planet-name">${planetName}</div> -->
             </div>
         `;
     }
@@ -58,9 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
             planet.addEventListener('click', (e) => {
                 const img = planet.querySelector('img');
                 modal.querySelector('img').src = img.src;
-                modal.querySelector('.modal-description').textContent = 
-                    planet.querySelector('.planet-name').textContent;
-                modal.style.display = 'block';
+
+                // 从 planetNames 数组中随机获取星球名字
+                const randomPlanetName = getRandomName(); 
+                modal.querySelector('.modal-description').textContent = randomPlanetName; // 设置为随机星球名字
+
+                modal.style.display = 'block'; // 显示模态框
                 e.stopPropagation();
             });
         });
