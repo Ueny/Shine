@@ -67,13 +67,13 @@ body {
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 107, 156, 0.3);
     animation: glow 1.5s infinite alternate;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+    max-width: 95%;
+    width: 95%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .planets {
