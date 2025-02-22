@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = (Math.random() - 0.5) * 140; // 随机 y 坐标，范围为 -70 到 70
             const z = (Math.random() - 0.5) * 100; // 随机 z 坐标，范围为 -50 到 50
 
-            planet.style.transform = `translate3d(${x}vw, ${y}vw, ${z}vw) scale(0.2)`;
+            planet.style.transform = `translate3d(${x}vw, ${y}vw, ${z}vw) scale(0.3)`;
         });
 
         planetElements.forEach(planet => {
